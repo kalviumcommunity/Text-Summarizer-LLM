@@ -16,7 +16,7 @@ def run_prompt(system_prompt, user_prompt, config=None):
             "temperature": 0.4,
             "top_k": 20,
             "top_p": 0.9,
-            "max_output_tokens": 200,
+            "max_output_tokens": 400,
             "stop_sequences": ["<<END>>"]
         }
 
