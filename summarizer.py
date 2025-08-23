@@ -14,7 +14,7 @@ def run_prompt(system_prompt, user_prompt, config=None):
     if config is None:
         config = {
             "temperature": 0.9,     # From 0.1 to 0.9, tells the AI on how random / creative the result has to be.
-            "top_k": 20,
+            "top_k": 30,            # From 20 to 30 for a bit more right use of words.
             "top_p": 0.9,
             "max_output_tokens": 400,
             "stop_sequences": ["<<END>>"]
