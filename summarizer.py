@@ -17,7 +17,7 @@ def run_prompt(system_prompt, user_prompt, config=None):
             "top_k": 30,            # From 20 to 30 for a bit more right use of words.
             "top_p": 0.9,
             "max_output_tokens": 400,
-            "stop_sequences": ["<<END>>"]
+            "stop_sequences": ["<<END>>"]  # Explained how stop sequence works
         }
 
     response = model.generate_content(
