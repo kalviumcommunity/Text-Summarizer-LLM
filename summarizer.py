@@ -7,7 +7,9 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 # Initialize model
-model = genai.GenerativeModel("gemini-1.5-flash")
+# model = genai.GenerativeModel("gemini-1.5-flash-latest")
+model = genai.GenerativeModel("gemini-flash-latest")
+
 
 def run_prompt(system_prompt, user_prompt, config=None):
     """Runs the prompt with given config and returns text"""
@@ -16,7 +18,7 @@ def run_prompt(system_prompt, user_prompt, config=None):
             "temperature": 0.9,     # From 0.1 to 0.9, tells the AI on how random / creative the result has to be.
             "top_k": 30,            # From 20 to 30 for a bit more right use of words.
             "top_p": 0.9,
-            "max_output_tokens": 400,
+            "max_output_tokens": 2000,
             "stop_sequences": ["<<END>>"]  # Explained how stop sequence works
         }
 
@@ -24,4 +26,8 @@ def run_prompt(system_prompt, user_prompt, config=None):
         [system_prompt, user_prompt],
         generation_config=config
     )
-    return response.text.strip()
+    # return response.text.strip()
+    if response.candidates and response.candidates[0].content.parts:
+        return response.text.strip()
+    else:
+        return "No valid response received. Try rephrasing input or reducing temperature/max tokens."
