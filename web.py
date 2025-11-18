@@ -18,7 +18,7 @@ class SummaryRequest(BaseModel):
     text: str
     mode: str
 
-@app.get("/")
+@app.get("/keepalive")
 def health_check():
     return {"status": "healthy"}
 
